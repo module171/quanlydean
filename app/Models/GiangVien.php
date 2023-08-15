@@ -11,7 +11,9 @@ class GiangVien extends Model
     protected $table = 'GiangVien';
     protected $primaryKey = 'MaGV';
     public $timestamps = false;
-
+    protected $fillable = [
+        'HoTen', 'Email', 'MatKhau', 'Lop', 'ChucVu', 'Khoa' // và các trường khác nếu cần
+    ];
     public function deTais()
     {
         return $this->hasMany(DeTai::class, 'MaGV');

@@ -2,10 +2,10 @@
 
 @extends('layouts.admin')
 
-@section('page-title', 'User Management')
-
+@section('page-title', 'Quản lý sinh viên')
+@section('titlepage', 'Quản lý sinh viên')
 @section('content')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importModal">
+<button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#importModal">
     Import Excel
 </button>
 
@@ -37,7 +37,7 @@
 </div>
 
 
-  <!-- Trong trang giao diện của bạn -->
+<!-- Trong trang giao diện của bạn -->
 <table id="studentsTable" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -47,6 +47,7 @@
             <th>Lớp</th>
             <th>Khoa</th>
             <th>Ngày sinh</th>
+
         </tr>
     </thead>
     <tbody>
@@ -56,25 +57,38 @@
 
 <!-- <script src="{{ asset('js/datatables_config.js') }}"></script> -->
 
-    @section('script')
-    <script type="text/javascript">
+@section('script')
+<script type="text/javascript">
     $(document).ready(function() {
         $('#studentsTable').DataTable({
-        ajax: {
-            url: '{{ route("getAllStudent") }}', // Đường dẫn đến phương thức trả về dữ liệu
-            dataSrc: '' // Trường này không cần nếu dữ liệu trả về là mảng JSON
-        },
-        columns: [
-            { data: 'MaSV' },
-            { data: 'HoTen' },
-            { data: 'Email' },
-            { data: 'Lop' },
-            { data: 'Khoa' },
-            { data: 'NgaySinh' },
-        ]
-    });
-        $('#importButton').on('click', function(event){
-   
+            ajax: {
+                url: '{{ route("getAllStudent") }}', // Đường dẫn đến phương thức trả về dữ liệu
+                dataSrc: '' // Trường này không cần nếu dữ liệu trả về là mảng JSON
+            },
+            columns: [{
+                    data: 'MaSV'
+                },
+                {
+                    data: 'HoTen'
+                },
+                {
+                    data: 'Email'
+                },
+                {
+                    data: 'Lop'
+                },
+                {
+                    data: 'Khoa'
+                },
+                {
+                    data: 'NgaySinh'
+                },
+
+
+            ]
+        });
+        $('#importButton').on('click', function(event) {
+
             var form = $('#importForm')[0];
             var formData = new FormData(form);
 
@@ -85,7 +99,7 @@
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    
+
                     var message = response.message;
                     alert(message);
                     $('#importModal').modal('hide');
