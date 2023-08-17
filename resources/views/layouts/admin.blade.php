@@ -41,7 +41,11 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    @if(Auth::guard('giangvien')->check())
+                    <li><a class="dropdown-item" href="{{ route('logoutgiangvien') }}">Logout</a></li>
+                    @else
+                    <li><a class="dropdown-item" href="{{ route('logoutquantrivien') }}">Logout</a></li>
+                    @endif
                 </ul>
             </li>
         </ul>

@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'giangvien' => [
+            'driver' => 'session',
+            'provider' => 'giangvien',
+        ],
+        'quantrivien' => [
+            'driver' => 'session',
+            'provider' => 'quantrivien',
+        ],
     ],
 
     /*
@@ -63,6 +71,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'giangvien' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Giangvien::class,
+        ],
+        'quantrivien' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Quantrivien::class,
         ],
 
         // 'users' => [

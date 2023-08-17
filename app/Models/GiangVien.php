@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GiangVien extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class GiangVien extends Authenticatable
 {
     use HasFactory;
     protected $table = 'GiangVien';
@@ -18,4 +20,8 @@ class GiangVien extends Model
     {
         return $this->hasMany(DeTai::class, 'MaGV');
     }
+    protected $casts = [
+
+        'MatKhau' => 'hashed',
+    ];
 }
